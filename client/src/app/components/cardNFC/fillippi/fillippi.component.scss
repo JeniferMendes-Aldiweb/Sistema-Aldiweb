@@ -1,0 +1,283 @@
+// Variáveis Globais: Ajuste estas variáveis para modificar cores, fontes e tamanhos principais.border
+@import url('https://fonts.googleapis.com/css2?family=Adonay&display=swap');
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'Comfortaa';
+  src: url('../../../../assets/fonts/Comfortaa-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'Adonay';
+  src: url('../../../../assets/fonts/Adonay.ttf') format('truetype');
+
+}
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: 'ComfortaaBold';
+  src: url('../../../../assets/fonts/Comfortaa-Bold.ttf') format('truetype');
+}
+$primary-text-color: #ffffff; // Cor principal do texto (branco)
+$secondary-text-color: #e0e0e0; // Cor secundária do texto (cinza claro)
+$button-bg-color: #a0522d; // Cor de fundo dos botões (tom de siena, similar à imagem)
+$button-hover-bg-color: #8b4513; // Cor de fundo dos botões ao passar o mouse (siena mais escuro)
+$card-max-width: 400px; // Largura máxima do card de perfil
+$border-radius: 15px; // Raio da borda para elementos arredondados
+$font-family: 'Comfortaa', sans-serif; // Família da fonte principal (substitua se tiver uma fonte mais próxima da imagem)
+$icon-action-height: 1.2em; // Altura das imagens nos botões de ação (Salvar, Compartilhar)
+$icon-contact-size: 50px; // Tamanho (largura e altura) das imagens nos links de contato
+
+// Container Principal do Card de Perfil
+.profile-card-container {
+  position: relative; // Necessário para posicionar elementos filhos absolutamente (como o overlay)
+  display: flex; // Habilita o layout flexbox
+  justify-content: center; // Centraliza o conteúdo horizontalmente
+  align-items: center; // Centraliza o conteúdo verticalmente
+  min-height: 100vh; // Garante que o container ocupe pelo menos toda a altura da viewport
+  padding: 20px; // Espaçamento interno ao redor do card
+  font-family: $font-family; // Aplica a fonte definida na variável
+  background-image: url("../../../../assets/images/fundoCardG.png");
+  background-size: cover;
+  overflow: hidden; // Esconde qualquer conteúdo que transborde o container (útil para efeitos de fundo)
+
+  .watermark-img {
+    width: 120px; // Largura da imagem
+    height: 120px; // Altura da imagem
+    border-radius: $border-radius; // Bordas arredondadas para a imagem
+    margin-bottom: 15px; // Espaçamento abaixo da imagem
+    border: 3px solid rgba(255, 255, 255, 0.5); // Borda sutil ao redor da imagem
+    object-fit: cover; // Garante que a imagem cubra o espaço sem distorcer
+  }
+
+  // Overlay de Fundo (Opcional)
+  .background-overlay {
+    font-family: 'Adonay', sans-serif;
+    position: absolute; // Posiciona sobre o fundo do container principal
+    top: 0; // Alinha no topo
+    left: 0; // Alinha à esquerda
+    width: 100%; // Ocupa toda a largura
+    height: 100%; // Ocupa toda a altura
+    opacity: 0.6; // Ajusta a opacidade do overlay
+    z-index: 1; // Coloca o overlay atrás do conteúdo principal (z-index: 2)
+  }
+
+  // Conteúdo Principal do Card
+  .profile-content {
+    position: relative; // Necessário para o z-index funcionar corretamente
+    z-index: 2; // Garante que o conteúdo fique acima do overlay de fundo
+    display: flex; // Habilita flexbox para organizar os itens internos
+    flex-direction: column; // Organiza os itens internos verticalmente
+    align-items: center; // Centraliza os itens internos horizontalmente
+    text-align: center; // Centraliza o texto dentro do card
+    max-width: $card-max-width; // Limita a largura máxima do card
+    width: 100%; // Faz o card ocupar a largura disponível até o máximo definido
+    color: $primary-text-color; // Define a cor do texto principal
+    padding: 30px 20px; // Espaçamento interno do card
+    background-color: rgba(0, 0, 0, 0.2); // Fundo semi-transparente para destacar o conteúdo
+    border-radius: $border-radius; // Aplica bordas arredondadas ao card
+  }
+
+  // Cabeçalho do Perfil (Imagem, Nome, Subtítulo)
+  .profile-header {
+    margin-bottom: 25px; // Espaçamento abaixo do cabeçalho
+
+    .profile-picture {
+      width: 120px; // Largura da imagem
+      height: 120px; // Altura da imagem
+      border-radius: $border-radius; // Bordas arredondadas para a imagem
+      margin-bottom: 15px; // Espaçamento abaixo da imagem
+      border: 3px solid rgba(255, 255, 255, 0.5); // Borda sutil ao redor da imagem
+      object-fit: cover; // Garante que a imagem cubra o espaço sem distorcer
+    }
+
+    .profile-name {
+      font-family: 'Adonay', sans-serif;
+      font-size: 2.2em; // Tamanho da fonte do nome
+      margin-bottom: 5px; // Espaçamento abaixo do nome
+      font-weight: bold; // Deixa o nome em negrito
+    }
+
+    .profile-subtitle {
+      border: 1px solid rgba(255, 255, 255, 0.5); // Borda sutil ao redor da imagem
+      font-weight: bold; // Deixa o nome em negrito
+      font-size: 1em; // Tamanho da fonte do subtítulo
+      color: $secondary-text-color; // Cor do texto do subtítulo
+      background-color: rgba(160, 82, 45, 0.7); // Fundo com cor similar aos botões, levemente transparente
+      padding: 5px 15px; // Espaçamento interno do subtítulo
+      border-radius: 15px; // Bordas bem arredondadas para o subtítulo
+      display: inline-block; // Permite definir padding e background corretamente
+
+      .cube-icon {
+        margin-left: 5px; // Espaçamento à esquerda do ícone
+      }
+    }
+  }
+
+  // Botões de Ação (Salvar, Compartilhar)
+  .action-buttons {
+    //font-family: 'Comfortaa','Adonay';
+    display: flex; // Organiza os botões lado a lado
+    justify-content: center; // Centraliza os botões horizontalmente
+    gap: 15px; // Espaçamento entre os botões
+    margin-bottom: 30px; // Espaçamento abaixo dos botões de ação
+    width: 100%; // Faz a seção ocupar toda a largura disponível
+
+    .action-btn {
+      flex-grow: 1; // Permite que os botões cresçam para ocupar o espaço disponível
+      max-width: 180px; // Limita a largura máxima de cada botão
+      padding: 12px 20px; // Espaçamento interno dos botões
+      background-color: $button-bg-color; // Cor de fundo definida na variável
+      color: $primary-text-color; // Cor do texto do botão
+      border: none; // Remove a borda padrão do botão
+      border-radius: $border-radius; // Aplica bordas arredondadas
+      font-size: 1em; // Tamanho da fonte do texto do botão
+      cursor: pointer; // Muda o cursor para indicar clicabilidade
+      transition: background-color 0.3s ease; // Efeito suave na mudança de cor ao passar o mouse
+      display: flex; // Permite alinhar imagem e texto
+      align-items: center; // Centraliza verticalmente o conteúdo do botão (imagem e texto)
+      justify-content: center; // Centraliza horizontalmente o conteúdo do botão
+      gap: 8px; // Espaçamento entre a imagem e o texto dentro do botão
+      border: 1px solid rgba(255, 255, 255, 0.5); // Borda sutil ao redor da imagem
+
+      &:hover {
+        background-color: $button-hover-bg-color; // Muda a cor de fundo ao passar o mouse
+      }
+
+      // Estilo para a IMAGEM dentro do Botão de Ação
+      .icon-img {
+        height: $icon-action-height; // Define a altura da imagem (ajuste na variável)
+        width: auto; // Mantém a proporção da imagem
+        vertical-align: middle; // Ajuda no alinhamento vertical
+      }
+    }
+  }
+
+  // Links de Contato (Telefone, LinkedIn, Email, Website)
+  .contact-links {
+    display: flex; // Habilita flexbox
+    flex-direction: column; // Organiza os links verticalmente
+    gap: 15px; // Espaçamento entre os links
+    width: 100%; // Faz a seção ocupar toda a largura
+    margin-bottom: 30px; // Espaçamento abaixo da seção de links
+
+    .contact-link-btn {
+      border: 1px solid rgba(255, 255, 255, 0.5); // Borda sutil ao redor da imagem
+      display: flex; // Permite alinhar imagem e texto
+      align-items: center; // Alinha verticalmente a imagem e o texto
+      padding: 15px 20px; // Espaçamento interno
+      background-color: $button-bg-color; // Cor de fundo (mesma dos botões de ação)
+      color: $primary-text-color; // Cor do texto
+      border-radius: $border-radius; // Bordas arredondadas
+      text-decoration: none; // Remove o sublinhado padrão de links
+      transition: background-color 0.3s ease; // Efeito suave na mudança de cor ao passar o mouse
+      font-size: 1em; // Tamanho da fonte
+
+      &:hover {
+        background-color: $button-hover-bg-color; // Muda a cor de fundo ao passar o mouse
+      }
+
+      // Estilo para a IMAGEM dentro do Link de Contato
+      .contact-icon-img {
+        height: $icon-contact-size; // Define a altura da imagem (ajuste na variável)
+        width: $icon-contact-size; // Define a largura da imagem (ajuste na variável)
+        margin-right: 15px; // Espaçamento à direita da imagem
+        object-fit: contain; // Garante que a imagem caiba sem cortar (ou use 'cover' se preferir preencher)
+        vertical-align: middle; // Ajuda no alinhamento vertical
+
+        // Opcional: Adicionar borda circular como nos ícones anteriores
+        // border: 1px solid rgba(255, 255, 255, 0.5);
+        // border-radius: 50%;
+        // background-color: rgba(255, 255, 255, 0.1);
+        // padding: 5px; // Adicione padding se a borda não deve tocar a imagem
+        // box-sizing: border-box; // Inclui o padding no tamanho total
+      }
+    }
+  }
+
+  // Rodapé do Perfil
+  .profile-footer {
+    line-height: 1.0; // ou em px, ex: 20px
+    font-size: 1.2em; // Tamanho da fonte do texto do rodapé
+    color: $secondary-text-color; // Cor do texto do rodapé
+    margin-top: 5px; // Espaçamento acima do rodapé
+  }
+
+  // Logo no Canto Superior Direito (Placeholder)
+  .top-right-logo {
+      position: absolute; // Posicionamento absoluto em relação ao container principal
+      top: 20px; // Distância do topo
+      right: 20px; // Distância da direita
+      width: 40px; // Largura do logo (ajuste conforme necessário)
+      height: auto; // Altura automática para manter proporção
+      z-index: 3; // Garante que o logo fique acima de outros elementos
+      opacity: 0.8; // Leve transparência no logo
+  }
+}
+
+// Ajustes Responsivos para Telas Menores (ex: smartphones)
+@media (max-width: 480px) {
+  .profile-card-container {
+    background-image: url("../../../../assets/images/fundoCard.png");
+    padding: 10px; // Reduz o espaçamento externo
+
+    .profile-content {
+      padding: 20px 15px; // Reduz o espaçamento interno
+    }
+
+    .profile-header {
+      .profile-picture {
+        width: 100px;
+        height: 100px;
+      }
+      .profile-name {
+        font-size: 1.8em;
+      }
+      .profile-subtitle {
+        font-size: 0.9em;
+      }
+    }
+
+    .action-buttons {
+      // flex-direction: column; // Alteração: Mantém botões lado a lado em telas menores.
+      gap: 10px; // Reduz o espaçamento entre os botões
+      margin-bottom: 25px; // Ajusta o espaçamento inferior
+
+      .action-btn {
+        max-width: 100%; // Botões podem ocupar mais espaço se necessário
+        padding: 10px 15px; // Ajusta o padding
+        font-size: 0.95em; // Ajusta o tamanho da fonte
+
+        // Ajusta o tamanho da imagem nos botões de ação
+        .icon-img {
+           height: calc(#{$icon-action-height} * 0.9); // Reduz ligeiramente a altura
+        }
+      }
+    }
+
+    .contact-links {
+      gap: 10px; // Reduz o espaçamento entre os links
+      margin-bottom: 25px; // Ajusta o espaçamento inferior
+
+      .contact-link-btn {
+        padding: 12px 15px; // Ajusta o padding
+        font-size: 0.95em; // Ajusta o tamanho da fonte
+
+        // Ajusta o tamanho e espaçamento da imagem nos links de contato
+        .contact-icon-img {
+          $new-size: calc(#{$icon-contact-size} * 0.85); // Calcula novo tamanho
+          height: $new-size;
+          width: $new-size;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .profile-footer {
+      font-size: 1.0em; // Reduz o tamanho da fonte
+      line-height: 1.0; // ou em px, ex: 20px
+    }
+  }
+}
+

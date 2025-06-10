@@ -1,0 +1,365 @@
+nav {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding-top: 50px;
+    height: 100vh;
+    // background-color: yellow !important;
+}
+
+.dashboard-app {
+    // background-color: #515151 !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width:calc(100% - 150px);
+    min-height: calc(100% - 150px);
+}
+
+.dashboard-content {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.dashboard-nav {
+    min-width: 150px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // overflow: auto;
+    // background-color: #373193;
+}
+
+.dashboard-compact .dashboard-nav {
+    display: none;
+}
+
+.dashboard-nav header {
+    min-height: 50px;
+    padding: 8px 27px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.dashboard-nav header .menu-toggle {
+    display: none;
+    margin-right: auto;
+}
+
+.dashboard-nav a {
+    color: #515151;
+}
+
+.dashboard-nav a:hover {
+    text-decoration: none;
+}
+
+.dashboard-nav {
+    background-color: #000000;
+}
+
+.dashboard-nav a {
+    color: #fff;
+}
+
+.brand-logo {
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    color: #515151;
+    align-items: center;
+}
+
+
+.dashboard-nav-list {
+
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 0 0 #b75305;
+    //width: 50px;
+}
+// .dashboard-nav-list:hover{
+// width: 150px;
+// transition: all 0.5s ease;
+// }
+
+.collapse .dashboard-nav-item{
+    background-color: black ;
+}
+
+.dashboard-nav-item {
+    display: flex;
+    justify-content: start;
+    padding: 15px 0px 15px 15px;
+    transition: ease-out 0.3s;
+}
+
+.dashboard-nav-item:hover {
+    background:#b75305;
+    border-bottom: 2px solid white;
+    padding-bottom: 20px;
+}
+
+.active {
+    // background-color: #fe8902;
+    background-color: #b75305;
+}
+
+.dashboard-nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    //width: 45px;
+}
+// .dashboard-nav-dropdown:hover{
+//     width: 150px;
+//     transition: all 0.5s ease;
+//     }
+
+// .txt-link{
+//     width: 50px;
+//     overflow: hidden;
+
+// }.txt-link:hover{
+//     width: 150px;
+//     transition: all 0.5s ease;
+// }
+// .btn-expandir{
+//     overflow: hidden;
+// }
+
+.dashboard-nav .dashboard-nav-dropdown-toggle:after {
+    border-top-color: rgba(255, 255, 255, 0.72);
+}
+
+.dashboard-nav-dropdown-menu {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.dashboard-nav-dropdown-item {
+    min-height: 40px;
+    padding: 8px 20px 8px 70px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    transition: ease-out 0.5s;
+}
+
+.dashboard-nav-dropdown-item:hover {
+    background: #b75305;
+}
+
+
+.dashboard-toolbar {
+    position: fixed;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    min-height: 50px;
+    background-color: #000000;
+    // padding: 8px 27px;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.user-logged{
+    color: white;
+    font-size: 25px;
+    margin-right: 20px;
+    text-align: center;
+    padding: auto;
+
+}
+.user-logged i{
+    color: #b75305;
+    margin-right: 5px;
+    font-size: 28px;
+
+    padding-bottom: 5px;
+}
+
+.nav-item-divider {
+    height: 1px;
+    margin: 1rem 0;
+    overflow: hidden;
+    background-color: rgba(236, 238, 239, 0.7);
+}
+
+.activated{
+    background-color: #b75305 !important; 
+}
+
+.toggleSidebar{
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 13px;
+}
+
+// INÍCIO HEADER
+.header,
+.navigation_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header {
+    height: 5.5em;
+    padding: 0 10%;
+    justify-content: space-between;
+    background-color: black !important;
+    box-shadow: 1px 1px 4px var(--color-dark4);
+}
+
+.img_logo_header {
+    width: 45px;
+}
+
+.navigation_header {
+    gap: 3em;
+    z-index: 2;
+}
+
+.navigation_header a {
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+    text-decoration: none;
+    color: #b75305 !important;
+    transition: color 0.3s ease-in-out;
+}
+
+.navigation_header a::after {
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    content: '';
+    height: 2px;
+    position: absolute;
+    background-color: #b75305;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.navigation_header a:hover {
+    color: #b75305;
+}
+
+.navigation_header a:hover::after {
+    left: 0;
+    width: 100%;
+}
+
+.btn_icon_header {
+    border: none;
+    display: none;
+    cursor: pointer;
+    background: transparent;
+    color: var(--color-white);
+}
+// FIM HEADER
+
+@media (min-width: 992px) {
+    .dashboard-app {
+        margin-left: 150px;
+    }
+
+    .dashboard-compact .dashboard-app {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-content {
+        padding: 15px 0px;
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1070;
+    }
+
+    .dashboard-nav.mobile-show {
+        display: block;
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard-nav header .menu-toggle {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+
+@media (min-width: 992px) {
+    .dashboard-toolbar {
+        left: 150px;
+    }
+
+    .dashboard-compact .dashboard-toolbar {
+        left: 0;
+    }
+}
+.btn-expandir{
+    color:white;
+    width: 100%;
+    padding-left: 10px;
+    font-size: 24px;
+}
+
+.dashboard-nav {
+    transition: transform 0.3s ease;
+}
+
+.menu-fechado {
+    transform: translateX(-100%); /* Move o menu para fora da tela */
+}
+
+.menu-toggle {
+    cursor: pointer;
+}
+

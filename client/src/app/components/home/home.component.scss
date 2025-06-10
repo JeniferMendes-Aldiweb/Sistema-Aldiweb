@@ -1,0 +1,25 @@
+.desktop-video {
+    height: 90vh;
+    display: block;
+    margin-top: 40px;
+    border-radius: 10px;
+  }
+  
+.mobile-video {
+    display: none;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    // video
+    .desktop-video {
+        display: none;
+        border-radius: 10px;
+    }
+
+    .mobile-video {
+        display: block;
+        margin-top: 40px;
+        border-radius: 10px;
+    }
+}

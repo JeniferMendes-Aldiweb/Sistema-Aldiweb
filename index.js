@@ -17,10 +17,22 @@ const serviceCepRouter = require('./routes/serviceCepRoutes');
 const tipoRecurso = require('./routes/tipoRecursoRoutes');
 const agendaRouter = require('./routes/agendaRoutes');
 
-const https = require('https');
-const fs = require('fs');
+const https = require('https');                                                     //
+const fs = require('fs');                                                           //  
+const options = {                                                                   // não é necessario no onrender
+    key: fs.readFileSync('server.key'),     // Caminho para sua chave privada       //
+    cert: fs.readFileSync('server.cert')    // Caminho para seu certificado         //
+};                                                                                  //
 
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
+  });
 
+  
 const cors = require('cors');
 const path = require('path');
 
@@ -52,13 +64,6 @@ app.use('/agenda', express.json(), agendaRouter);
 
 //Serviços Auxiliares
 app.use('/cep', express.json(), serviceCepRouter);
-
-
-const options = {
-    key: fs.readFileSync('server.key'),     // Caminho para sua chave privada
-    cert: fs.readFileSync('server.cert')    // Caminho para seu certificado
-};
-
 
 //NÃO MEXER AQUI EM BAIXO
 if (process.env.NODE_ENV != 'development') {

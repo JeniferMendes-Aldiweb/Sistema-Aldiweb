@@ -24,15 +24,17 @@ const options = {                                                               
     cert: fs.readFileSync('server.cert')    // Caminho para seu certificado         //
 };                                                                                  //
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT
-  });
+// const mysql = require('mysql2');
 
-  
+// const connection = mysql.createConnection({
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_NAME,
+//     port: process.env.DB_PORT
+//   });
+
+
 const cors = require('cors');
 const path = require('path');
 
@@ -86,6 +88,7 @@ if (process.env.NODE_ENV != 'development') {
 
 // RODAR API EM DESENVOLVIMENTO
 app.listen(process.env.PORT, () => { console.log("Server Running on Port: "+process.env.PORT)});
+
 
 
 

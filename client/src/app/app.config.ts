@@ -16,7 +16,7 @@ export const TokenInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, n
 
   const clonedReq = req.clone({
     setHeaders:{
-    'Access-Control-Allow-Origin': 'https://aldiweb.com.br',
+    'Access-Control-Allow-Origin': '*',
     'authorization_token': token,
     authorization: 'Bearer 5127a36571723e23134014797dadb582050824d303a79ffba8689ef0ded84984'
     }

@@ -41,7 +41,7 @@ const path = require('path');
 //tudo que vier de requisião com url '/user' , pegamos do body com express.json e usamos o 
 //userRouter(gerenciador de rotas de cada modulo) para identificar o restante da rota e mandar para o controlador correto
 app.use(cors({
-    origin:"https://aldiweb.com.br",
+    origin: true,
     //origin:"http://localhost:4200",
     methods:["GET","POST","PUT","DELETE"],
     exposedHeaders: ['Quantidades_Registros'],
@@ -84,13 +84,23 @@ if (process.env.NODE_ENV != 'development') {
     // })
 }
 
-
-
 // RODAR API EM DESENVOLVIMENTO
-app.listen(process.env.PORT, () => { console.log("Server Running on Port: "+process.env.PORT)});
+// app.listen(process.env.PORT, () => { console.log("Server Running on Port: "+process.env.PORT)});
+
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => {
+// console.log(`Server running on port ${PORT}`);
+// });
 
 
+//teste manus
+const PORT = process.env.PORT || 3000;
+const HOST = '0.0.0.0';
 
+app.listen(PORT, HOST, () => {
+  console.log(`Servidor rodando em ${HOST}:${PORT}`);
+  console.log(`Ambiente: ${process.env.NODE_ENV || 'development'}`);
+});
 
 // RODAR API EM PRE PRODUÇÃO
 // https.createServer(options, app).listen(process.env.PORT, () => {

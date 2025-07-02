@@ -16,19 +16,6 @@ const PROXY_CONFIG = [
     pathRewrite: {
       "^/": "",
     },
-  },
-  {
-    context: {
-      target: "http://localhost:3000",
-      secure: false,
-      changeOrigin: true,
-      logLevel: "debug",
-      headers: {
-        'Access-Control-Allow-Origin': "*",
-        'Access-Control-Allow-Methods': "GET, POST, PUT, DELETE, OPTIONS",
-        'Access-Control-Allow-Headers': "Content-Type, Authorization"
-      }
-    }
   }
 ];
 

@@ -50,7 +50,7 @@ export class LoginService {
     this.user.perfil = data.perfil;
     this.user.isloggedIn = true;
 
-    localStorage.setItem('authorization-token-access', this.token);
+    localStorage.setItem('Authorization', this.token);
     localStorage.setItem('user', this.user.name);
     localStorage.setItem('perfil', this.user.perfil);
     localStorage.setItem('isloggedIn', this.user.isloggedIn.toString());
@@ -64,7 +64,7 @@ export class LoginService {
   validate() {
     if (typeof localStorage !== 'undefined') {
       // alert("teste NG ONinit")
-      return !!localStorage.getItem('authorization-token-access');
+      return !!localStorage.getItem('Authorization');
     }
     return false
   }
@@ -95,9 +95,9 @@ export class LoginService {
     }
   }
 
-  // constructorHeadres(){
-  //   const token = localStorage.getItem('authorization-token-access');
-  //   const _headers = new HttpHeaders({'authorization': token!});
-  //   return _headers
-  // }
+ constructorHeadres(){
+   const token = localStorage.getItem('Authorization');
+   const _headers = new HttpHeaders({'authorization': token!});
+   return _headers
+  }
 }

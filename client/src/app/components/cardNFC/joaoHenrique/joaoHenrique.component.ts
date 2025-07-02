@@ -12,7 +12,7 @@ export class JoaoHenriqueComponent {
   contact = {
     nome: 'João Henrique',
     telefone: '+553197771272',
-    email: 'joao.campos@aldiweb.com',
+    email: 'joaohenrique@aldiweb.com.br',
     website: 'https://www.aldiweb.com.br',
     linkedIn: 'https://www.linkedin.com/in/jo%C3%A3o-henrique-b2b581360?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
     org: 'João Henrique'

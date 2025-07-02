@@ -97,7 +97,7 @@ const userController = {
             return res.status(400).send(user);
         }
 
-        const token = jwt.sign({ID_user: selectUser[0][0].USUARIO, perfil: selectUser[0][0].PERFIL }, process.env.TOKEN_SECRET_ACCESS, { expiresIn: 1200 });
+        const token = jwt.sign({ID_user: selectUser[0][0].USUARIO, perfil: selectUser[0][0].PERFIL }, process.env.SECRET_KEY_JWT, { expiresIn: 1200 });
         user = {
             'authorization': token,
             'msg':'login autorizado',
@@ -128,7 +128,7 @@ const userController = {
         const selectUser = await db.selectForUser(req.body.usuario);
 
         if (selectUser[0] !== null && selectUser[0].length > 1) {
-            return res.status(400).send({ message:'Usuário Já exists'});
+            return res.status(400).send({ message:'Usuário Já existe'});
         }
 
         const UpdateUser = new Object({

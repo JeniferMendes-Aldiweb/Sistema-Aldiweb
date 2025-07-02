@@ -1,3 +1,6 @@
+import { LucasCamposComponent } from './components/cardNFC/lucasCampos/lucasCampos.component';
+import { RaphaelleRosaComponent } from './components/cardNFC/raphaelleRosa/raphaelleRosa.component';
+import { WanessaComponent } from './components/cardNFC/wanessa/wanessa.component';
 import { FabioTuratiComponent } from './components/cardNFC/fabioTurati/fabioTurati.component';
 import { RafaelRamalhoComponent } from './components/cardNFC/rafaelRamalho/rafaelRamalho.component';
 import { LuizaDuarteComponent } from './components/cardNFC/luizaDuarte/luizaDuarte.component';
@@ -49,6 +52,11 @@ import { ConsultoriaFluigComponent } from './components/consultoriaFluig/consult
 import { ConsultoriaBPOComponent } from './components/consultoriaBPO/consultoriaBPO.component';
 import { CardComponent } from './components/cardNFC/card/card.component';
 import { AldineiComponent } from './components/cardNFC/aldinei/aldinei.component';
+import { TiagoBonutiComponent } from './components/cardNFC/tiagoBonuti/tiagoBonuti.component';
+import { AlefPedrosaComponent } from './components/cardNFC/alefPedrosa/alefPedrosa.component';
+import { TotvsAComponent } from './components/cardNFC/totvs-a/totvs-a.component';
+import { TotvsBComponent } from './components/cardNFC/totvs-b/totvs-b.component';
+import { TotvsCComponent } from './components/cardNFC/totvs-c/totvs-c.component';
 
 
 export const routes: Routes = [
@@ -60,9 +68,40 @@ export const routes: Routes = [
         path: 'jarise',
         component: CardComponent
     },
+                        {
+        path: 'jarise/1247408109',
+        component: TotvsCComponent
+    },
+                    {
+        path: 'jarise/1246486365',
+        component: TotvsBComponent
+    },
+                {
+        path: 'jarise/1247746749',
+        component: TotvsAComponent
+    },
+            {
+        path: 'jarise/1245896029',
+        component: TiagoBonutiComponent
+    },
+        {
+        path: 'jarise/1244749837',
+        component: AlefPedrosaComponent
+    },
     {
-        //1246464717
-        path: 'jarise/FabioTurati',
+        path: 'jarise/lucas',
+        component: LucasCamposComponent
+    },
+    {
+        path: 'jarise/1248475533',
+        component: RaphaelleRosaComponent
+    },
+    {
+        path: 'jarise/1248495325',
+        component: WanessaComponent
+    },
+    {
+        path: 'jarise/FabioTurati',//1246464717
         component: FabioTuratiComponent
     },
     {
@@ -82,7 +121,7 @@ export const routes: Routes = [
         component: DriellyMarianyComponent
     },
     {
-        path: 'jarise/1247434829',
+        path: 'jarise/1248261709',
         component: HenriqueVasconcelosComponent
     },
     {

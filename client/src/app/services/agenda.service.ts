@@ -43,13 +43,13 @@ export class AgendaService {
     const url = `${this.url}/agendasByUsuarioCriacao?usuariocriacao=${usuariocriacao}`;
   
     // Recuperando o token do localStorage
-    const token = localStorage.getItem('authorization-token-access');
+    const token = localStorage.getItem('Authorization');
     if (!token) {
       throw new Error('Token não encontrado. O usuário precisa estar autenticado.');
     }
     console.log('Token recuperado:', token);
     // Configurando os cabeçalhos com o token
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = new HttpHeaders().set('Authorization', `${token}`);
   
     console.log('URL da requisição:', url);
     console.log('Cabeçalhos enviados:', headers);

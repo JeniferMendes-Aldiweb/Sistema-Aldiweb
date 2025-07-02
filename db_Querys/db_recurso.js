@@ -5,7 +5,7 @@ const connect = db.connect
 //GERENCIAMENTO DE RECURSO
 async function selectZRecursos(){
     const conn = await connect();
-    const [rows] = await conn.query('SELECT zrecursos.*, tiporecurso.DESCRICAO, zpessoa.NOME FROM zrecursos INNER JOIN tiporecurso ON zrecursos.TIPORECURSO = TIPORECURSO.IDTIPO INNER JOIN zpessoa ON zpessoa.IDPESSOA = zrecursos.IDPESSOA');
+    const [rows] = await conn.query('SELECT ZRECURSOS.*, TIPORECURSO.DESCRICAO, ZPESSOA.NOME FROM ZRECURSOS INNER JOIN TIPORECURSO ON ZRECURSOS.TIPORECURSO = TIPORECURSO.IDTIPO INNER JOIN ZPESSOA ON ZPESSOA.IDPESSOA = ZRECURSOS.IDPESSOA');
     return rows;
 }
 async function selectZRecurso(id){

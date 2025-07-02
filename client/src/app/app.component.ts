@@ -35,7 +35,7 @@ export class AppComponent {
     return {
       tokenGetter: () => {
         // Implemente aqui a lógica para obter o token do usuário autenticado
-        return localStorage.getItem('authorization-token-access');
+        return localStorage.getItem('Authorization');
       },
       whitelistedDomains: [environment.api],
       blacklistedRoutes: [this.url]

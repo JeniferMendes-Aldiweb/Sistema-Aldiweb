@@ -25,7 +25,7 @@ async function selectCidadeUF(estado){
 }
 async function selectOrgaoEmissor(){
     const conn = await connect();
-    const [rows] = await conn.query('SELECT * FROM orgao_expedidor');
+    const [rows] = await conn.query('SELECT * FROM ORGAO_EXPEDIDOR');
     return rows;
 }
 

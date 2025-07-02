@@ -10,17 +10,17 @@ import { Component } from '@angular/core';
 export class DriellyMarianyComponent {
   
   contact = {
-    nome: 'Drielly Mariany',
+    nome: 'Drielly Xavier',
     telefone: '+5538988020766',
     email: 'drielly.xavier@aldiweb.com.br',
     website: 'https://www.aldiweb.com.br',
     linkedIn: 'https://www.linkedin.com/in/drielly-xavier/',
-    org: 'Drielly Mariany'
+    org: 'Drielly Xavier'
   };
 
   shareData = {
-    title: 'Drielly Mariany - CONSULTORA AldiWeb',
-    text: 'Conheça o perfil da Drielly Mariany!',
+    title: 'Drielly Xavier - CONSULTORA AldiWeb',
+    text: 'Conheça o perfil da Drielly Xavier!',
     url: window.location.href 
   };
 

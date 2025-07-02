@@ -1,8 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+
 const userRouter = require('./routes/userRoutes');
-const adminRouter = require('./routes/adminRoutes');
 const clientRouter = require('./routes/clientesRoute');
 const contractRouter = require('./routes/contractRoutes');
 const projectRouter = require('./routes/projectRoutes');
@@ -17,36 +17,19 @@ const serviceCepRouter = require('./routes/serviceCepRoutes');
 const tipoRecurso = require('./routes/tipoRecursoRoutes');
 const agendaRouter = require('./routes/agendaRoutes');
 
-const https = require('https');                                                     //
-const fs = require('fs');                                                           //  
-const options = {                                                                   // não é necessario no onrender
-    key: fs.readFileSync('server.key'),     // Caminho para sua chave privada       //
-    cert: fs.readFileSync('server.cert')    // Caminho para seu certificado         //
-};                                                                                  //
-
-// const mysql = require('mysql2');
-
-// const connection = mysql.createConnection({
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASSWORD,
-//     database: process.env.DB_NAME,
-//     port: process.env.DB_PORT
-//   });
-
-
 const cors = require('cors');
 const path = require('path');
 
 //tudo que vier de requisião com url '/user' , pegamos do body com express.json e usamos o 
 //userRouter(gerenciador de rotas de cada modulo) para identificar o restante da rota e mandar para o controlador correto
 app.use(cors({
-    origin: true,
-    //origin:"http://localhost:4200",
+    origin:"http://localhost:4200",
+    //origin:"https://aldiweb.com.br",
     methods:["GET","POST","PUT","DELETE"],
-    exposedHeaders: ['Quantidades_Registros'],
-    credentials: true
-}))
+    allowedHeaders: ["Content-Type", "Authorization", "authorization_token"],
+    exposedHeaders: ["Quantidades_Registros"]
+} ))
+
 
 //Gerenciamento de Rotas inicial.
 app.use('/user', express.json(), userRouter);
@@ -67,6 +50,9 @@ app.use('/agenda', express.json(), agendaRouter);
 //Serviços Auxiliares
 app.use('/cep', express.json(), serviceCepRouter);
 
+
+
+
 //NÃO MEXER AQUI EM BAIXO
 if (process.env.NODE_ENV != 'development') {
 
@@ -84,23 +70,12 @@ if (process.env.NODE_ENV != 'development') {
     // })
 }
 
+
+
 // RODAR API EM DESENVOLVIMENTO
-// app.listen(process.env.PORT, () => { console.log("Server Running on Port: "+process.env.PORT)});
-
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-// console.log(`Server running on port ${PORT}`);
-// });
+app.listen(process.env.PORT, () => { console.log("Server Running on Port: "+process.env.PORT)});
 
 
-//teste manus
-const PORT = process.env.PORT || 3000;
-const HOST = '0.0.0.0';
-
-app.listen(PORT, HOST, () => {
-  console.log(`Servidor rodando em ${HOST}:${PORT}`);
-  console.log(`Ambiente: ${process.env.NODE_ENV || 'development'}`);
-});
 
 // RODAR API EM PRE PRODUÇÃO
 // https.createServer(options, app).listen(process.env.PORT, () => {

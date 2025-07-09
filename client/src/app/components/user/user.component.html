@@ -28,11 +28,26 @@
                     </a>
                     
                     <div class="collapse" id="cadastros">
-                        <a [routerLink]="['/user/agenda']" [routerLinkActive]="['activated']"
-                            [routerLinkActiveOptions]="{exact: true}" class="dashboard-nav-item">
-                            <i class="bi bi-calendar"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span class="txt-link">Agenda</span>
-                        </a>
+
+                    <div [ngSwitch]="perfil">
+                        <div *ngSwitchCase="'admin'">
+                            <div data-ls-module="collapse" data-target="#accordeon0" class="ls-collapse ">
+                                <a class="d-flex justify-content-between dashboard-nav-item" data-bs-toggle="collapse"
+                                    data-bs-targeT="#leadsCollapse">
+                                    <i class="bi bi-newspaper"></i>
+                                    <span class="txt-link">Leads</span>
+                                    <i class="bi bi-arrow-down-short"></i>
+                                </a>
+                                <div class="collapse" id="leadsCollapse">
+                                    <a [routerLink]="['/user/lead']" [routerLinkActive]="['activated']"
+                                    class="dashboard-nav-item">Novo Leads</a>
+                                    <a [routerLink]="['/user/leads']" [routerLinkActive]="['activated']"
+                                    class="dashboard-nav-item">Todos Leads</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
                         
                         <div [ngSwitch]="perfil">
                             <div *ngSwitchCase="'admin'">

@@ -57,6 +57,9 @@ import { AlefPedrosaComponent } from './components/cardNFC/alefPedrosa/alefPedro
 import { TotvsAComponent } from './components/cardNFC/totvs-a/totvs-a.component';
 import { TotvsBComponent } from './components/cardNFC/totvs-b/totvs-b.component';
 import { TotvsCComponent } from './components/cardNFC/totvs-c/totvs-c.component';
+import { LeadsComponent } from './components/_Leads/leads/leads.component';
+import { VisaoLeadsComponent } from './components/_Leads/visaoLeads/visaoLeads.component';
+import { KanbanLeadsComponent } from './components/_Leads/kanbanLeads/kanbanLeads.component';
 
 
 export const routes: Routes = [
@@ -184,6 +187,22 @@ export const routes: Routes = [
             {
                 path: '',
                 component: HomeComponent
+            },
+            {
+                path: 'lead',
+                component: LeadsComponent,
+            },
+             {
+                 path: 'leads',
+                 component: VisaoLeadsComponent,
+             },
+             {
+                 path: 'leads/:id',
+                 component: LeadsComponent,
+             },
+            {
+                path: 'kanbanLeads',
+                component: KanbanLeadsComponent,
             },
             {
                 path: 'kanban',

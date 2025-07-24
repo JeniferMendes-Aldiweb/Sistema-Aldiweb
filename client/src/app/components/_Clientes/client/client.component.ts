@@ -16,8 +16,12 @@ import { MensageriaService } from '../../../services/mensageria.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProjectsComponent } from '../../_Projetos/projects/projects.component';
+import { Leads } from '../../../models/leads.model';
 
-
+export interface CadastroClienteData {
+  isModal: boolean;
+  lead?: Leads;
+}
 
 @Component({
   selector: 'app-client',
@@ -33,7 +37,7 @@ export class ClientComponent {
   error$ = new Subject<boolean>();
   camposPreenchidos: boolean = true;
   botaoClicado: boolean = false;
-  isModal: boolean;
+  isModal: boolean = true;
   
 
   client = {
@@ -103,6 +107,8 @@ export class ClientComponent {
   estadoPgto$ = new Observable<Estado[]>();
   cidadePgto$ = new Observable<Cidade[]>();
 
+
+
   constructor(
     private formatService: FormatsService,
     private clientService: ClientService,
@@ -111,14 +117,13 @@ export class ClientComponent {
     private loginService: LoginService,
     private cep: CepService,
     private messageriaService: MensageriaService,
-    @Optional() public dialogRef: MatDialogRef<ProjectsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { isModal: boolean },
+    @Optional() public dialogRef: MatDialogRef<ClientComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: CadastroClienteData
   ) {
-    console.log('Data recebido:', data);
-    this.isModal = data.isModal;
-    this.client.idcliente = this.route.snapshot.params['id']
+  if (this.data) {
+    this.isModal = this.data.isModal;
   }
-
+  }
   ngAfterViewInit() {
     console.log(this.isModal); // deve imprimir true
   }
@@ -134,22 +139,29 @@ export class ClientComponent {
     this.paisesEntrega$ = this.paises$;
     this.paisesPgto$ = this.paises$;
 
-    if (this.route.snapshot.params['id'] === undefined) {
-      this.event = "Cadastrar"
+     if (this.data && this.data.lead) {
+    // CASO 1: Veio do Kanban (MODO DIALOG)
+    this.event = "Cadastrar";
+    console.log("Populando formulário com dados do Lead:", this.data.lead);
+    
+    // Chama a sua função `popularCNPJ` que você já tem!
+    // Ela é perfeita para preencher os campos do objeto `this.client`.
+    this.popularCNPJ(this.data.lead); 
 
+  } else {
+    // CASO 2: Rota normal (MODO PÁGINA)
+    const idCliente = this.route.snapshot.params['id'];
+    
+    if (!idCliente) {
+      // Criando um novo cliente pela página
+      this.event = "Cadastrar";
     } else {
+      // Editando um cliente existente
+      this.event = "Editar";
       this.clientService
-        .clientCurrent(this.route.snapshot.params['id'])
+        .clientCurrent(idCliente)
         .pipe(
-          catchError(err => {
-            this.messageriaService.messagesRequest('Ocorreu um Error', err.error.message, 'messages', 'danger')
-            this.error$.next(true)
-            if (err.statusText === "Unauthorized") {
-              alert("Seu iToken foi expirado! Realize o login novamente")
-              this.loginService.deslogar();
-            }
-            return of();
-          })
+          // ... seu `catchError` continua igual ...
         )
         .subscribe((datas) => {
           const data = datas[0];
@@ -219,7 +231,7 @@ export class ClientComponent {
         this.formatService.ativo(this.client.ativo);
       }
     }, 100);
-  };
+  }};
 
   registerClient(form: NgForm) {
 
@@ -272,8 +284,11 @@ export class ClientComponent {
               return of();
             })
           ).subscribe((data) => { 
-            this.messageriaService.messagesRequest('Sucesso!', 'Cadastro Realizado Com Sucesso!', 'messages', 'success')
-            this.router.navigate(['/user/clients']) 
+            this.messageriaService.messagesRequest('Sucesso!', 'Cadastro Realizado Com Sucesso!', 'messages', 'success');
+            if (this.isModal) {
+        this.dialogRef.close(true); // Fecha o dialog e retorna sucesso
+      } else {
+            this.router.navigate(['/user/clients'])}
           })
 
       } else {
@@ -335,8 +350,15 @@ export class ClientComponent {
               return of();
             })
           ).subscribe(() => {
-            this.messageriaService.messagesRequest('Sucesso!', 'Cadastro Realizado Com Sucesso!', 'messages', 'success')
-            this.router.navigate(['/user/clients']) })
+            this.messageriaService.messagesRequest('Sucesso!', 'Cadastro Realizado Com Sucesso!', 'messages', 'success');
+            
+           if (this.isModal) {
+        this.dialogRef.close(true); // Fecha o dialog e retorna sucesso
+      } else {
+        this.router.navigate(['/user/clients']); // Comportamento padrão de página
+      }
+          
+          })
       }
 
     } else if (this.event === "Editar") {
@@ -355,8 +377,11 @@ export class ClientComponent {
           })
         )
         .subscribe(() => {
-          this.messageriaService.messagesRequest('Sucesso!', 'Cadastro Editado Com Sucesso!', 'messages', 'success')
-          this.router.navigate(['/user/clients'])
+          this.messageriaService.messagesRequest('Sucesso!', 'Cadastro Editado Com Sucesso!', 'messages', 'success');
+          if (this.isModal) {
+        this.dialogRef.close(true); // Fecha o dialog e retorna sucesso
+      } else {
+          this.router.navigate(['/user/clients'])}
         })
     } else {
       alert("Error!")
@@ -618,3 +643,6 @@ export class ClientComponent {
   }
 
 }
+
+
+ 

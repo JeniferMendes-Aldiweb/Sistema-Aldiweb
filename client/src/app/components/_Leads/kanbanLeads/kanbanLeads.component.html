@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quadro Kanban</title>
+  <title>Prospect</title>
 </head>
 
 <body>
 
   <div class="panel">
     <div cdkDropListGroup>
-      <h2 class="text-center mt-4 mb-4"><b>QUADRO KANBAN</b></h2>
+      <h2 class="text-center mt-4 mb-4"><b>PROSPECTS</b></h2>
       <div class="d-flex">
         <div data-ls-module="collapse" data-target="#accordeon0" class="ls-collapse ">
           <div class="btn btn-warning d-flex dashboard-nav-item" data-bs-toggle="collapse"
@@ -23,13 +23,13 @@
           <div class="collapse" id="filtroskanban">
             <div class="form-group d-flex flex-row mt-3">
               <div class="form-group">
-                <label>Cliente</label>
+                <label>Prospects</label>
                 <select [(ngModel)]="LeadsEscolhido.idleads" type="text" class="form-control large-input"
                   name="nome" (click)="BuscarLeadsID(LeadsEscolhido.idleads)">
-                  <option value="" selected hidden>Selecione um leads</option>
+                  <option value="" selected hidden>Selecione um Prospects</option>
                   <option value=0 >Todos</option>
                   <option *ngFor="let leads of leads$ | async" value="{{leads.IDLEADS}}">
-                    {{leads.NOME}}
+                    {{leads.NOMEFANTASIA}}
                   </option>
                 </select>
               </div>
@@ -56,18 +56,19 @@
         <div class="col-md-3">
           <div class="card">
             <div class="card-header emAndamento">
-              <h5>BACKLOG</h5>
+              <h5>PROSPECTS</h5>
             </div>
             <div class="card-body" cdkDropList [cdkDropListData]="todo" class="example-list"
               (cdkDropListDropped)="drop($event)">
               <div class="example-box" *ngFor="let item of todo" cdkDrag>
                 <mat-icon class="mr-2">task</mat-icon>
-                {{item.NOMEFANTASIA}}
+                {{item.NOMEFANTASIA}}<br>
+                Tel: {{item.TELEFONE}}
               </div>
               <div class="card" (click)="openDialog()">
                 <div class="input-group mb-3">
                   <input type="text" class="form-control  mt-2" [(ngModel)]="newTodo"
-                    placeholder="Insira uma nova tarefa"
+                    placeholder="Insira um novo Prospect"
                     style="width: 100px; height: 30px; margin-left: 10px; margin-right: 10px;">
                 </div>
               </div>
@@ -78,13 +79,14 @@
         <div class="col-md-3">
           <div class="card">
             <div class="card-header backlog">
-              <h5>EM ANDAMENTO</h5>
+              <h5>CONTATO</h5>
             </div>
             <div class="card-body" cdkDropList [cdkDropListData]="emAndamento" class="example-list"
               (cdkDropListDropped)="drop($event)">
               <div class="example-box" *ngFor="let item of emAndamento" cdkDrag>
                 <mat-icon class="mr-2">hourglass_top</mat-icon>
-                <p>{{item.NOMEFANTASIA}}</p>
+                {{item.NOMEFANTASIA}}<br>
+                Tel: {{item.TELEFONE}}
               </div>
             </div>
           </div>
@@ -93,13 +95,14 @@
         <div class="col-md-3">
           <div class="card">
             <div class="card-header concluido">
-              <h5>CONCLUÍDO</h5>
+              <h5>PROPOSTA</h5>
             </div>
             <div class="card-body" cdkDropList [cdkDropListData]="concluido" class="example-list"
               (cdkDropListDropped)="drop($event)">
               <div class="example-box" *ngFor="let item of concluido" cdkDrag>
                 <mat-icon class="mr-2">check_circle_outline</mat-icon>
-                {{item.NOMEFANTASIA}}
+                {{item.NOMEFANTASIA}}<br>
+                Tel: {{item.TELEFONE}}
               </div>
             </div>
           </div>
@@ -110,13 +113,14 @@
         <div class="col-md-3">
           <div class="card">
             <div class="card-header impedidos">
-              <h5>IMPEDIMENTOS</h5>
+              <h5>LEAD PERDIDO</h5>
             </div>
             <div class="card-body" cdkDropList [cdkDropListData]="impedidos" class="example-list"
               (cdkDropListDropped)="drop($event)">
               <div class="example-box" *ngFor="let item of impedidos" cdkDrag>
                 <mat-icon class="mr-2">warning</mat-icon>
-                {{item.NOMEFANTASIA}}
+                {{item.NOMEFANTASIA}}<br>
+                Tel: {{item.TELEFONE}}
               </div>
             </div>
           </div>
@@ -126,24 +130,35 @@
         <div class="col-md-3">
           <div class="card">
             <div class="card-header naoPlanejados">
-              <h5>NÃO PLANEJADOS</h5>
+              <h5>NEGOCIAÇÃO</h5>
             </div>
             <div class="card-body" cdkDropList [cdkDropListData]="naoPlanejados" class="example-list"
               (cdkDropListDropped)="drop($event)">
               <div class="example-box" *ngFor="let item of naoPlanejados" cdkDrag>
                 <mat-icon class="mr-2">highlight_off</mat-icon>
-                {{item.NOMEFANTASIA}}
-              </div>
-              <div class="card" (click)="openDialog()">
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control  mt-2" [(ngModel)]="newNaoPlanejados"
-                    placeholder="Insira uma tarefa não planejada"
-                    style="width: 100px; height: 30px; margin-left: 10px; margin-right: 10px;">
-                </div>
+                {{item.NOMEFANTASIA}}<br>
+                Tel: {{item.TELEFONE}}
               </div>
             </div>
           </div>
         </div>
+
+                <div class="col-md-3">
+          <div class="card">
+            <div class="card-header naoPlanejados">
+              <h5>NOVO CLIENTE ✅</h5>
+            </div>
+            <div class="card-body" cdkDropList [cdkDropListData]="client" class="example-list"
+              (cdkDropListDropped)="drop($event)">
+              <div class="example-box" *ngFor="let item of client" cdkDrag>
+                <mat-icon class="mr-2">highlight_off</mat-icon>
+                {{item.NOMEFANTASIA}}<br>
+                Tel: {{item.TELEFONE}}
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

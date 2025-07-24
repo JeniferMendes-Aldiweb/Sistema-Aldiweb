@@ -93,7 +93,8 @@ export class LeadsService {
   }
 
   editLeadsEtapa(etapa:number,id:string){
-    return this.httpClient.put<Leads>(`${this.url}/Etapa/${id}`, {"etapa":etapa})
+    console.log(etapa)
+    return this.httpClient.put<Leads>(`${this.url}/mudarEtapa/${id}`, {"etapa":etapa})
     }
 
   registerPessoaFisica(newLeads: CreateLeads, dtnascimento: string) {

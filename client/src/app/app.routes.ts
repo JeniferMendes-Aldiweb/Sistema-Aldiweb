@@ -60,6 +60,7 @@ import { TotvsCComponent } from './components/cardNFC/totvs-c/totvs-c.component'
 import { LeadsComponent } from './components/_Leads/leads/leads.component';
 import { VisaoLeadsComponent } from './components/_Leads/visaoLeads/visaoLeads.component';
 import { KanbanLeadsComponent } from './components/_Leads/kanbanLeads/kanbanLeads.component';
+import { ApresentacaoComponent } from './components/apresentacao/apresentacao.component';
 
 
 export const routes: Routes = [
@@ -67,6 +68,10 @@ export const routes: Routes = [
     //     path: 'home',
     //     component: AldiwebsiteComponent
     // },
+        {
+        path: 'apresentacao',
+        component: ApresentacaoComponent
+    },
     {
         path: 'jarise',
         component: CardComponent
@@ -76,12 +81,12 @@ export const routes: Routes = [
         component: TotvsCComponent
     },
                     {
-        path: 'jarise/1246486365',
-        component: TotvsBComponent
+        path: 'jarise/1246464685',
+        component: TotvsBComponent //Bruna
     },
                 {
-        path: 'jarise/1247746749',
-        component: TotvsAComponent
+        path: 'jarise/1247365341',
+        component: TotvsAComponent //richardMKT
     },
             {
         path: 'jarise/1245896029',

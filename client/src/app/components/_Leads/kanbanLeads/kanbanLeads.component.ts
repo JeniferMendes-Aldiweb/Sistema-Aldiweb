@@ -6,9 +6,11 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { LeadsService } from '../../../services/leads.service';
 import { Observable, catchError, of } from 'rxjs';
-import {Leads} from '../../../models/leads.model'
+import { Leads } from '../../../models/leads.model'
 import {LeadsComponent} from '../../_Leads/leads/leads.component'
-import { RouterLink } from '@angular/router';
+import { RouterLink,Router } from '@angular/router';
+import { ClientComponent } from '../../_Clientes/client/client.component';
+
 
 export class DialogContentExampleDialog {
 }
@@ -30,12 +32,14 @@ export class KanbanLeadsComponent implements DoCheck {
   concluido: Array<Leads> = [];
   impedidos: Array<Leads> = [];
   naoPlanejados: Array<Leads> = [];
+  client: Array<Leads> = [];
 
   newTodo: string = '';
   newEmAndamento: string = '';
   newConcluido: string = '';
   newImpedidos: string = '';
   newNaoPlanejados: string = '';
+  newClient: string ='';
 
   LeadsEscolhido ={
     idleads: 0,
@@ -43,15 +47,12 @@ export class KanbanLeadsComponent implements DoCheck {
   }
 
 
-  // teste: string[] = ['Cadastrar Clientes', 'Cadastrar Pessoas', 'Cadastrar Objetos']
+  //teste: string[] = ['Cadastrar Clientes', 'Cadastrar Pessoas', 'Cadastrar Objetos']
 
   constructor(public dialog: MatDialog,
-    // private projetoTarefaService: ProjetoTarefaService,
-    // private clienteService: ClientService,
-    // private projetoService: ProjectService,
-    private leadsService: LeadsService
-  ) {
-  }
+    private leadsService: LeadsService,
+    private router: Router
+  ){}
 
 
   ngOnInit() {
@@ -61,10 +62,10 @@ export class KanbanLeadsComponent implements DoCheck {
 
     this.leads$ = this.leadsService.Allleads();
 
-    // this.projetoTarefaService.allProjetoTarefa().subscribe((data) => {
-    //   this.SeparaTarefasPorEtapa(data)
-    // });
-
+    this.leadsService.Allleads().subscribe((data) => {
+      this.SeparaTarefasPorEtapa(data)
+      
+    });
   }
 
   recarregar() {
@@ -73,6 +74,7 @@ export class KanbanLeadsComponent implements DoCheck {
     this.concluido = [];
     this.impedidos = [];
     this.naoPlanejados = []
+    this.client =[]
   }
 
   buscarLeadsFiltro() {
@@ -91,6 +93,11 @@ export class KanbanLeadsComponent implements DoCheck {
       this.SeparaTarefasPorEtapa(data)
     })
   }
+
+  //   tarefasBuscaCliente(idleads: number) {
+  //   if (this.LeadsEscolhido.idleads != 0) this.leads$ = this.projetoService.projectsWithClients(idCliente)
+  //   else this.Projetos$ = this.projetoService.allProjects();
+  // }
   
   SeparaTarefasPorEtapa(data: Leads[]) {
 
@@ -110,6 +117,9 @@ export class KanbanLeadsComponent implements DoCheck {
           break;
         case '5':
           this.naoPlanejados.push(element);
+          break;
+        case '6':
+          this.client.push(element);
           break;
         default:
           break;
@@ -174,56 +184,35 @@ export class KanbanLeadsComponent implements DoCheck {
           break;
         case "cdk-drop-list-3":
           this.TrocarEtapa(4, idTroca)
-          this.openDialog();
+          //this.openDialog();
           break;
         case "cdk-drop-list-4":
           this.TrocarEtapa(5, idTroca)
+          break;
+        case "cdk-drop-list-5":
+          this.TrocarEtapa(6, idTroca)
+          const lead = event.container.data[event.currentIndex];
+          this.converterLeadParaCliente(lead);
           break;
         default:
           console.log(event.container.id)
           //alert("error!")
           break;
       }
-
-      // console.log(event)
-      // console.log(event.container.data[event.currentIndex].IDPROJETOTAREFA)
-      // console.log(event.container.id)
-
-    }
-  }
-  addTodo() {
-    if (this.newTodo.trim() !== '') {
-      console.log(this.newTodo.trim())
-      // this.todo.push(this.newTodo.trim());
-      this.newTodo = ''; // Limpar entrada após adicionar
-    }
-  }
-  addEmAndamento() {
-    if (this.newEmAndamento.trim() !== '') {
-      // this.emAndamento.push(this.newEmAndamento.trim());
-      this.newEmAndamento = ''; // Limpar entrada após adicionar
-    }
-  }
-  addConcluido() {
-    if (this.newConcluido.trim() !== '') {
-      // this.concluido.push(this.newConcluido.trim());
-      this.newConcluido = ''; // Limpar entrada após adicionar
-    }
-  }
-  addImpedidos() {
-    if (this.newImpedidos.trim() !== '') {
-      // this.impedidos.push(this.newImpedidos.trim());
-      this.newImpedidos = ''; // Limpar entrada após adicionar
-    }
-  }
-  addNaoPlanejados() {
-    if (this.newNaoPlanejados.trim() !== '') {
-      // this.naoPlanejados.push(this.newNaoPlanejados.trim());
-      console.log(this.newNaoPlanejados.trim())
-      // this.projetoTarefaService.editProjetoTarefaEtapa()
-      this.newNaoPlanejados = ''; // Limpar entrada após adicionar
     }
   }
 
-
+converterLeadParaCliente(lead: Leads) {
+  const dialogRef = this.dialog.open(ClientComponent, {
+   width: '900px',
+      height: '450px',
+      panelClass: 'dialog-with-scrollbar',
+      data: { isModal: true, lead: lead }
+    });
+   dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      // se precisar, salva ou atualiza algo
+    }
+  });
+}
 }

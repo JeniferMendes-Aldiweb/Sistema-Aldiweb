@@ -221,7 +221,7 @@ const leadsController = {
     },
       updateEtapa: async function (req, res) {
         try {
-          const savedLeads = await db.updateAProjetoTarefaEtapa(req.params.id,req.body.etapa);
+          const savedLeads = await db.updateALeadsEtapa(req.params.id,req.body.etapa);
           res.status(200).send(savedLeads);
         } catch (error) {
           res.status(400).send(error);

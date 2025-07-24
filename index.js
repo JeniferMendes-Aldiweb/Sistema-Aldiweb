@@ -19,13 +19,14 @@ const agendaRouter = require('./routes/agendaRoutes');
 const leadsRouter = require('./routes/leadsRoutes');
 
 const cors = require('cors');
+console.log('Configurando CORS para: http://sistema.aldiweb.com.br');
 const path = require('path');
 
 //tudo que vier de requisião com url '/user' , pegamos do body com express.json e usamos o 
 //userRouter(gerenciador de rotas de cada modulo) para identificar o restante da rota e mandar para o controlador correto
 app.use(cors({
-    origin:"http://localhost:4200",
-    //origin:"https://aldiweb.com.br",
+    //origin:"http://localhost:4200",
+    origin:"https://sistema.aldiweb.com.br",
     methods:["GET","POST","PUT","DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "authorization_token"],
     exposedHeaders: ["Quantidades_Registros"]

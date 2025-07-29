@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta de Auditoria de Folha de Pagamento - Aldi Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-lg border-b border-aldi-orange/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class=" bg-gradient-to-br to-aldi-terracotta rounded-xl flex items-center justify-center logo">
+                        <a href="https://aldiweb.com.br">
+                        <img src="logoRodape.png" width="80" height="30"></img>
+                        </a>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#proposta" class="nav-link pb-1 font-medium">Proposta</a>
+                    <a href="#metodologia" class="nav-link pb-1 font-medium">Metodologia</a>
+                    <a href="#beneficios" class="nav-link pb-1 font-medium">Benefícios</a>
+                    <a href="#contato" class="nav-link pb-1 font-medium">Contato</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-aldi-orange/50 hover:bg-aldi-orange/10 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-aldi-orange/10">
+             <a href="#proposta" class="block text-center py-3 px-6 text-aldi-dark hover:bg-aldi-orange/5 hover:text-aldi-orange transition">Proposta</a>
+             <a href="#metodologia" class="block text-center py-3 px-6 text-aldi-dark hover:bg-aldi-orange/5 hover:text-aldi-orange transition">Metodologia</a>
+             <a href="#beneficios" class="block text-center py-3 px-6 text-aldi-dark hover:bg-aldi-orange/5 hover:text-aldi-orange transition">Benefícios</a>
+             <a href="#contato" class="block text-center py-3 px-6 text-aldi-dark hover:bg-aldi-orange/5 hover:text-aldi-orange transition">Contato</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section 1: Proposta e Objetivos -->
+        <section id="proposta" class="py-20 md:py-32 hero-gradient">
+            <div class="container mx-auto px-6 text-center">
+                <div class="floating-element">
+                    <h2 class="text-4xl md:text-6xl font-bold text-aldi-dark mb-6 leading-tight">
+                        Auditoria <span class="text-aldi-orange">Especializada</span><br>
+                        em Folha de Pagamento
+                    </h2>
+                </div>
+                <p class="max-w-4xl mx-auto text-lg md:text-xl text-gray-600 mb-16 leading-relaxed">
+                    Apresentamos uma proposta completa para a realização de uma auditoria na sua folha de pagamento, com foco no sistema RM TOTVS. Nosso objetivo é identificar não conformidades, otimizar processos e garantir a plena conformidade legal, mitigando riscos financeiros e trabalhistas para o seu hospital.
+                </p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <!-- Card 1 -->
+                    <div class="card bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="card-icon mx-auto">✓</div>
+                        <h3 class="text-xl font-bold mb-4 text-aldi-dark">Conformidade Legal</h3>
+                        <p class="text-gray-600 leading-relaxed">Verificamos se todos os procedimentos estão em estrita conformidade com a CLT, leis da saúde e acordos coletivos.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="card bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="card-icon mx-auto">⚙</div>
+                        <h3 class="text-xl font-bold mb-4 text-aldi-dark">Otimização de Processos</h3>
+                        <p class="text-gray-600 leading-relaxed">Identificamos gargalos e ineficiências nos fluxos de trabalho, propondo melhorias práticas para maior agilidade.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="card bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="card-icon mx-auto">🎯</div>
+                        <h3 class="text-xl font-bold mb-4 text-aldi-dark">Precisão nos Cálculos</h3>
+                        <p class="text-gray-600 leading-relaxed">Validamos a correção de salários, benefícios, adicionais e impostos, assegurando a integridade financeira.</p>
+                    </div>
+                     <!-- Card 4 -->
+                     <div class="card bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="card-icon mx-auto">🛡</div>
+                        <h3 class="text-xl font-bold mb-4 text-aldi-dark">Mitigação de Riscos</h3>
+                        <p class="text-gray-600 leading-relaxed">Reduzimos a exposição a passivos trabalhistas e autuações fiscais, protegendo a saúde financeira da instituição.</p>
+                    </div>
+                     <!-- Card 5 -->
+                     <div class="card bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="card-icon mx-auto">📈</div>
+                        <h3 class="text-xl font-bold mb-4 text-aldi-dark">Gestão RM TOTVS</h3>
+                        <p class="text-gray-600 leading-relaxed">Propomos otimizações no uso do sistema, maximizando o aproveitamento das suas funcionalidades.</p>
+                    </div>
+                     <!-- Card 6 -->
+                     <div class="card bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="card-icon mx-auto">🤝</div>
+                        <h3 class="text-xl font-bold mb-4 text-aldi-dark">Análise Abrangente</h3>
+                        <p class="text-gray-600 leading-relaxed">Com uma equipe multidisciplinar, garantimos uma análise minuciosa e eficaz de ponta a ponta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 2: Metodologia -->
+        <section id="metodologia" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-aldi-dark mb-6">Nossa Metodologia <span class="text-aldi-orange">360°</span></h2>
+                    <p class="max-w-4xl mx-auto text-lg md:text-xl text-gray-600 leading-relaxed">Nossa abordagem combina a experiência de dois perfis de auditores complementares com um processo estruturado em fases, garantindo uma análise completa e profunda.</p>
+                </div>
+
+                <!-- Auditor Toggles -->
+                <div class="max-w-5xl mx-auto">
+                    <h3 class="text-2xl md:text-3xl font-bold text-center mb-8 text-aldi-dark">Uma Abordagem Dupla para Máxima Eficácia</h3>
+                    <div class="flex justify-center mb-12 rounded-2xl p-2 bg-gray-100 max-w-2xl mx-auto">
+                        <button class="tab active w-1/2 p-4 font-semibold transition" data-target="auditor1">Auditor 1: Legal & Contábil</button>
+                        <button class="tab w-1/2 p-4 font-semibold transition" data-target="auditor2">Auditor 2: Sistemas & Processos</button>
+                    </div>
+                    <div id="auditor1" class="tab-content p-8 bg-gradient-to-br from-aldi-orange/5 to-aldi-salmon/10 rounded-2xl shadow-lg">
+                        <h4 class="font-bold text-xl mb-4 text-aldi-dark">Foco em Conformidade Legal e Contábil</h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-aldi-orange mr-3 mt-1">•</span>
+                                <span>Análise aprofundada da base legal, acordos e convenções coletivas.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-aldi-orange mr-3 mt-1">•</span>
+                                <span>Conferência de cálculos e recolhimentos de impostos (INSS, IRRF, FGTS).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-aldi-orange mr-3 mt-1">•</span>
+                                <span>Verificação da conformidade das verbas e rubricas lançadas no RM TOTVS.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-aldi-orange mr-3 mt-1">•</span>
+                                <span>Expertise em direito trabalhista, previdenciário e contabilidade.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="auditor2" class="tab-content hidden p-8 bg-gradient-to-br from-aldi-orange/5 to-aldi-salmon/10 rounded-2xl shadow-lg">
+                        <h4 class="font-bold text-xl mb-4 text-aldi-dark">Foco em Sistemas e Processos Operacionais</h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-aldi-orange mr-3 mt-1">•</span>
+                                <span>Auditoria da integridade e consistência dos dados cadastrais no RM TOTVS.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-aldi-orange mr-3 mt-1">•</span>
+                                <span>Teste das regras de cálculo e fórmulas configuradas no sistema.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-aldi-orange mr-3 mt-1">•</span>
+                                <span>Análise dos processos de integração (ex: ponto eletrônico).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-aldi-orange mr-3 mt-1">•</span>
+                                <span>Avaliação da segurança e perfis de acesso ao sistema.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Process Phases -->
+                <div class="mt-24">
+                    <h3 class="text-2xl md:text-3xl font-bold text-center mb-12 text-aldi-dark">Fases do Projeto de Auditoria</h3>
+                    <div class="relative max-w-6xl mx-auto">
+                        <!-- Connecting line -->
+                        <div class="absolute left-0 top-1/2 w-full h-1 bg-gradient-to-r from-aldi-orange via-aldi-terracotta to-aldi-salmon -translate-y-1/2 rounded-full"></div>
+                        <div class="relative grid grid-cols-1 md:grid-cols-4 gap-8">
+                            <!-- Phase 1 -->
+                            <div class="phase text-center cursor-pointer p-6 rounded-2xl border-2 border-transparent" data-phase="phase1">
+                                <div class="phase-number flex justify-center items-center mx-auto w-20 h-20 text-white rounded-2xl text-2xl font-bold mb-4 z-10 relative">1</div>
+                                <h4 class="font-bold text-lg text-aldi-dark">Planejamento</h4>
+                            </div>
+                            <!-- Phase 2 -->
+                            <div class="phase text-center cursor-pointer p-6 rounded-2xl border-2 border-transparent" data-phase="phase2">
+                                <div class="phase-number flex justify-center items-center mx-auto w-20 h-20 text-white rounded-2xl text-2xl font-bold mb-4 z-10 relative">2</div>
+                                <h4 class="font-bold text-lg text-aldi-dark">Execução</h4>
+                            </div>
+                            <!-- Phase 3 -->
+                             <div class="phase text-center cursor-pointer p-6 rounded-2xl border-2 border-transparent" data-phase="phase3">
+                                <div class="phase-number flex justify-center items-center mx-auto w-20 h-20 text-white rounded-2xl text-2xl font-bold mb-4 z-10 relative">3</div>
+                                <h4 class="font-bold text-lg text-aldi-dark">Identificação</h4>
+                            </div>
+                            <!-- Phase 4 -->
+                            <div class="phase text-center cursor-pointer p-6 rounded-2xl border-2 border-transparent" data-phase="phase4">
+                                <div class="phase-number flex justify-center items-center mx-auto w-20 h-20 text-white rounded-2xl text-2xl font-bold mb-4 z-10 relative">4</div>
+                                <h4 class="font-bold text-lg text-aldi-dark">Relatório Final</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="phase-details" class="mt-12 min-h-[200px] bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                        <p class="text-center text-gray-500 text-lg">Clique em uma fase para ver os detalhes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 3: Value Proposition (Chart, Deliverables, Benefits) -->
+        <section id="beneficios" class="py-20 md:py-32 bg-gradient-to-br from-white to-aldi-gray">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold text-aldi-dark mb-6">O Valor da Nossa <span class="text-aldi-orange">Auditoria</span></h2>
+                    <p class="max-w-4xl mx-auto text-lg md:text-xl text-gray-600 leading-relaxed">Nossa auditoria não apenas identifica problemas, mas entrega resultados tangíveis que fortalecem a gestão e a segurança financeira do seu hospital.</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
+                    <!-- Visualization -->
+                    <div class="text-center">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-4 text-aldi-dark">De Risco Elevado à Conformidade Segura</h3>
+                        <p class="text-gray-600 mb-8 text-lg">Visualize o impacto da nossa auditoria no perfil de risco da sua folha de pagamento.</p>
+                        <div class="chart-container">
+                            <canvas id="riskComplianceChart"></canvas>
+                        </div>
+                        <button id="toggleChartState" class="btn-primary mt-8 text-white font-bold py-3 px-8 text-lg hover:shadow-xl transition">Ver Estado Pós-Auditoria ➔</button>
+                    </div>
+
+                    <!-- Deliverables & Benefits -->
+                    <div>
+                         <div class="grid gap-12">
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-bold mb-8 text-aldi-dark">O que você recebe:</h3>
+                                <ul class="space-y-6">
+                                    <li class="flex items-start p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                                        <span class="text-aldi-orange font-bold text-2xl mr-4 mt-1">📄</span>
+                                        <div>
+                                            <h4 class="font-semibold text-lg text-aldi-dark mb-2">Relatório Detalhado</h4>
+                                            <p class="text-gray-600">Documento completo com todas as não conformidades, evidências e impactos.</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                                        <span class="text-aldi-orange font-bold text-2xl mr-4 mt-1">🗺️</span>
+                                         <div>
+                                            <h4 class="font-semibold text-lg text-aldi-dark mb-2">Plano de Ação</h4>
+                                            <p class="text-gray-600">Roteiro prático com ações corretivas, responsáveis e prazos.</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                                         <span class="text-aldi-orange font-bold text-2xl mr-4 mt-1">👨‍🏫</span>
+                                         <div>
+                                            <h4 class="font-semibold text-lg text-aldi-dark mb-2">Sessão de Apresentação</h4>
+                                            <p class="text-gray-600">Reunião para discussão dos resultados e alinhamento das ações.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h3 class="text-2xl md:text-3xl font-bold mb-8 text-aldi-dark">Principais Benefícios:</h3>
+                                <ul class="space-y-6">
+                                    <li class="flex items-start p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                                        <span class="text-green-500 font-bold text-2xl mr-4 mt-1">✅</span>
+                                        <p class="text-gray-700 text-lg">Maior segurança e confiabilidade nos dados da folha de pagamento.</p>
+                                    </li>
+                                     <li class="flex items-start p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                                        <span class="text-green-500 font-bold text-2xl mr-4 mt-1">✅</span>
+                                        <p class="text-gray-700 text-lg">Otimização e agilidade para os processos dos departamentos de RH e DP.</p>
+                                    </li>
+                                     <li class="flex items-start p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                                        <span class="text-green-500 font-bold text-2xl mr-4 mt-1">✅</span>
+                                        <p class="text-gray-700 text-lg">Plena conformidade com a legislação trabalhista e previdenciária vigente.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Call to Action -->
+        <section id="contato" class="py-20 md:py-32 gradient-bg text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/10"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Pronto para dar o <span class="text-white/90">Próximo Passo?</span></h2>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-white/90 mb-12 leading-relaxed">
+                    Vamos agendar uma reunião de alinhamento para detalhar nossa proposta e entender suas necessidades específicas. Inicie o caminho para uma folha de pagamento mais segura e eficiente hoje mesmo.
+                </p>
+                <a href="mailto:contato@aldiweb.com.br?subject=Proposta de Auditoria de Folha de Pagamento" class="inline-block bg-white text-aldi-orange font-bold py-4 px-10 rounded-2xl text-lg hover:bg-gray-50 transition shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 hover:scale-105">
+                    Agende uma Reunião
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-aldi-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class=" bg-gradient-to-br  rounded-xl flex items-center justify-center">
+                        <a href="https://aldiweb.com.br">
+                        <img src="logoRodape.png" width="80" height="30"></img>
+                        </a>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl">Aldi Web</h3>
+                        <p class="text-gray-400 text-sm">Consultoria Tecnológica</p>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">&copy; 2025 Aldi Web Consultoria. Todos os direitos reservados.</p>
+                    <p class="text-sm mt-2 text-gray-500">Construindo soluções tecnológicas para um futuro mais seguro.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -8,7 +8,7 @@
     "start": "node index.js",
     "start_client": "npm start --prefix client",
     "start_dev": "concurrently \"npm run start\" \"npm run start_client\" ",
-    "start_ngrok": "ngrok http 3000",
+    "start_ngrok": "ngrok start --config=./ngrok-aldiweb.yml nodejs",
     "build:angular": "cd client && npm run build:prod",
     "deploy": "node deploy.js",
     "build:deploy": "npm run build:angular && npm run deploy"

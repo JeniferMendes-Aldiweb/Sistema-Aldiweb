@@ -26,13 +26,14 @@ const path = require('path');
 //userRouter(gerenciador de rotas de cada modulo) para identificar o restante da rota e mandar para o controlador correto
 app.use(cors({
     //origin:"http://localhost:4200",
-    origin:"https://sistema.aldiweb.com.br",
+    origin:["https://sistema.aldiweb.com.br", 'http://localhost:3000'],
     methods:["GET","POST","PUT","DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "authorization_token"],
-    exposedHeaders: ["Quantidades_Registros"]
+    exposedHeaders: ["Quantidades_Registros"],
+    credentials: true
 } ))
 
-
+app.options('*', cors());
 //Gerenciamento de Rotas inicial.
 app.use('/user', express.json(), userRouter);
 app.use('/client', express.json(), clientRouter);

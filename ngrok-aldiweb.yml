@@ -1,0 +1,9 @@
+version: "3"
+agent:
+  authtoken: 30KMk4CvKXk73xBPtxwdNyiGoYE_36BmcrDcsEchDbeXvyUXE
+
+tunnels:
+  nodejs:
+    addr: 3000
+    proto: http
+    domain: spaniel-hopeful-actively.ngrok-free.app
